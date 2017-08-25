@@ -22,18 +22,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIView *superView = self.view;
     
     self.view.backgroundColor = [UIColor whiteColor];
     UIView *leftView = [[UIView alloc] init];
-//    leftView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:leftView];
+    leftView.backgroundColor = [UIColor redColor];
+    [superView addSubview:leftView];
+    UIView *rightView = [[UIView alloc] init];
+    rightView.backgroundColor = [UIColor redColor];
+    [superView addSubview:rightView];
+    UIView *midView = [[UIView alloc] init];
+    midView.backgroundColor = [UIColor redColor];
+    [superView addSubview:midView];
     
-    UIView *backView = [[UIView alloc] init];
-    backView.backgroundColor = [UIColor cyanColor];
-    [self.view addSubview:backView];
-    UILabel *label = [[UILabel alloc] init];
-    [self.view addSubview:label];
-    
+
     _label_f = [[UILabel alloc] init];
     _label_s = [[UILabel alloc] init];
     
@@ -41,39 +43,45 @@
     _label_s.text = @"kkkkkkkk";
     _label_f.backgroundColor = [UIColor yellowColor];
     _label_s.backgroundColor = [UIColor yellowColor];
-    [backView addSubview:_label_f];
-    [backView addSubview:_label_s];
+    [superView addSubview:_label_f];
+    [superView addSubview:_label_s];
     
-    UIView *midView = [[UIView alloc] init];
-    [backView addSubview:midView];
-    
-    [backView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
-        make.height.mas_equalTo(21);
-    }];
+
+   
     [leftView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(backView);
-        make.left.equalTo(self.view);
-        make.right.mas_equalTo(backView.mas_left);
-        make.height.equalTo(backView);
+        
+        make.centerY.equalTo(superView);
+        make.left.equalTo(superView);
+        make.height.mas_equalTo(21);
+        
+        
     }];
     [_label_f mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(backView);
-        make.top.equalTo(backView);
-        make.bottom.equalTo(backView);
+        make.left.mas_equalTo(leftView.mas_right);
+        make.centerY.equalTo(superView);
+        make.height.mas_equalTo(21);
     }];
-    [_label_s mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(backView);
-        make.top.equalTo(backView);
-        make.bottom.equalTo(backView);
-    }];
+    
     [midView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.height.mas_equalTo(21);
         make.left.mas_equalTo(_label_f.mas_right);
-        make.right.mas_equalTo(_label_s.mas_left);
-        make.top.equalTo(backView);
-        make.bottom.equalTo(backView);
+        make.centerY.equalTo(superView);
         make.width.equalTo(leftView);
         
+    }];
+    [_label_s mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(superView);
+        make.left.equalTo(midView.mas_right);
+        make.height.mas_equalTo(21);
+    }];
+   
+    [rightView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(superView);
+        make.left.mas_equalTo(_label_s.mas_right);
+        make.height.mas_equalTo(21);
+        make.right.equalTo(superView);
+        make.width.equalTo(midView);
     }];
     // Do any additional setup after loading the view, typically from a nib.
 }

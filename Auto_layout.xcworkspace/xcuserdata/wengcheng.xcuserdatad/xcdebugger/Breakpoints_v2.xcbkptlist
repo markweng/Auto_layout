@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Auto_layout/SecondViewController.m"
-            timestampString = "525336680.019305"
+            timestampString = "525341997.448625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "@implementation SecondViewController"
             landmarkType = "3">
          </BreakpointContent>
