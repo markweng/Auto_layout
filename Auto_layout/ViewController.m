@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "SecondViewController.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tf_1;
 @property (weak, nonatomic) IBOutlet UITextField *tf_2;
@@ -15,12 +15,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *label_1;
 @property (weak, nonatomic) IBOutlet UILabel *label_2;
 
+
+
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -36,6 +40,15 @@
     _label_2.text = _tf_2.text;
     
 }
+
+- (IBAction)push:(id)sender {
+    
+    SecondViewController *svc = [[SecondViewController alloc] init];
+                                 
+   [self.navigationController pushViewController:svc animated:YES];
+    
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
     [self.view endEditing:YES];
